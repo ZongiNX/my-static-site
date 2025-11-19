@@ -1,0 +1,21 @@
+title: "Мой статический сайт"
+description: "Современный статический сайт на GitHub Pages"
+baseurl: "/my-static-site"
+url: "https://ZongiNX.github.io"
+
+# Настройки сборки
+markdown: kramdown
+permalink: pretty
+
+# Плагины (если будем использовать Jekyll)
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# SEO настройки
+google_analytics: false
+
+# Автор
+author:
+  name: "Ваше Имя"
+  email: "ваш.email@example.com"
