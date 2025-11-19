@@ -1,7 +1,7 @@
 title: "Мой статический сайт"
 description: "Современный статический сайт на GitHub Pages"
 baseurl: "/my-static-site"
-url: "https://username.github.io"
+url: "https://ZongiNX.github.io"
 
 # Настройки сборки
 markdown: kramdown

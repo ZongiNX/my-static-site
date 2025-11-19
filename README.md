@@ -2,7 +2,7 @@
 Мой первый статический сайт
 # Мой статический сайт
 
-[![Deploy to GitHub Pages](https://github.com/username/my-static-site/actions/workflows/deploy.yml/badge.svg)](https://github.com/username/my-static-site/actions)
+[![Deploy to GitHub Pages](https://github.com/ZongiNX/my-static-site/actions/workflows/deploy.yml/badge.svg)](https://github.com/ZongiNX/my-static-site/actions)
 
 Современный статический сайт, развернутый на GitHub Pages с использованием CI/CD.
 
@@ -30,7 +30,7 @@ my-static-site/
 
 1. Клонируйте репозиторий:
 ```bash
-git clone https://github.com/username/my-static-site.git
+git clone https://github.com/ZongiNX/my-static-site.git
 ```
 
 2. Откройте `index.html` в браузере или используйте Live Server в VS Code.
@@ -39,7 +39,7 @@ git clone https://github.com/username/my-static-site.git
 
 Сайт автоматически деплоится при пуше в ветку `main`. 
 
-**Production URL:** https://username.github.io/my-static-site
+**Production URL:** https://ZongiNX.github.io/my-static-site
 
 ## 📝 Лицензия
 
