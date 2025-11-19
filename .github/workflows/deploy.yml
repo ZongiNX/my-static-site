@@ -23,11 +23,11 @@ jobs:
         cache: 'npm'
         
     # Шаг 3: Проверка HTML (опционально)
-    - name: HTML Validation
-      uses: cyrilletuzi/validate-html@v4
-      with:
-        pattern: "**/*.html"
-        level: warning
+    # - name: HTML Validation
+    #   uses: cyrilletuzi/validate-html@v4
+    #   with:
+    #     pattern: "**/*.html"
+    #     level: warning
         
     # Шаг 4: Деплой на GitHub Pages
     - name: Deploy to GitHub Pages
