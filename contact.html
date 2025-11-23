@@ -21,9 +21,7 @@
         <section class="about">
             <h1>Как нас найти</h1>
             <p>г. Москва, ул. такая, дом 2</p>
-            
-            <!-- map -->
-             <iframe
+			<iframe
                 src="https://yandex.ru/map-widget/v1/?ll=37.620393%2C55.75396&z=14&l=map"
                 width="100%"
                 height="300px
@@ -31,57 +29,84 @@
                 allowfullscreen
                 title="Карта проезда">
               </iframe>
-
-              <!-- форма -->
-	<div class="feedback-form">
-        <h3>Обратная связь</h3>
-        <form id="contactForm" class="contact-form" action="send_email.php" method="POST">
-            <div class="form-group">
-                <label for="name">Имя *</label>
-                <input type="text" id="name" name="name" required placeholder="Введите ваше имя">
-            </div>
             
-            <div class="form-group">
-                <label for="email">Email *</label>
-                <input type="email" id="email" name="email" required placeholder="your@email.com">
-            </div>
-            
-            <div class="form-group">
-                <label for="phone">Телефон</label>
-                <input type="tel" id="phone" name="phone" placeholder="+7 (999) 999-99-99">
-            </div>
-            
-            <div class="form-group">
-                <label for="subject">Тема сообщения</label>
-                <select id="subject" name="subject">
-                    <option value="">Выберите тему</option>
-                    <option value="question">Вопрос по сайтам</option>
-                    <option value="cooperation">Сотрудничество</option>
-                    <option value="wholesale">Заказ сайта</option>
-                    <option value="other">Другое</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label for="message">Сообщение *</label>
-                <textarea id="message" name="message" rows="5" required placeholder="Введите ваше сообщение..."></textarea>
-            </div>
-            
-            <div class="form-group checkbox-group">
-                <input type="checkbox" id="agree" name="agree" required>
-                <label for="agree">Я согласен на обработку персональных данных</label>
-            </div>
-            
-            <!-- Скрытое поле для защиты от спама -->
-            <input type="hidden" name="antispam" value="">
-            
-            <button type="submit" class="submit-btn">
-                <span class="btn-text">Отправить сообщение</span>
-                <span class="btn-loading" style="display: none;">Отправка...</span>
-            </button>
-        </form>
-        <div id="formMessage" class="form-message"></div>
+            <!-- форма начало -->
+<form id="contactForm" class="contact-form" action="https://formspree.io/f/xkgeybgr" method="POST">
+    <!-- 1. HONEYPOT ПОЛЕ (ОБЯЗАТЕЛЬНО) -->
+    <input type="checkbox" name="_gotcha" style="display: none;" tabindex="-1" autocomplete="off">
+    
+    <!-- 2. СКРЫТОЕ ПОЛЕ-ЛОВУШКА -->
+    <div style="display: none;">
+        <input type="text" name="_honey" placeholder="Не заполняйте это поле" tabindex="-1">
     </div>
+    
+    <!-- 3. ТАЙМСТАМП -->
+    <input type="hidden" name="_timestamp" id="timestamp" value="">
+    
+    <!-- Ваши обычные поля -->
+    <div class="form-group">
+        <label for="name">Имя *</label>
+        <input type="text" id="name" name="name" required minlength="2">
+    </div>
+    
+    <div class="form-group">
+        <label for="email">Email *</label>
+        <input type="email" id="email" name="email" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="phone">Телефон</label>
+        <input type="tel" id="phone" name="phone">
+    </div>
+    
+    <div class="form-group">
+        <label for="subject">Тема сообщения</label>
+        <select id="subject" name="subject" required>
+            <option value="">Выберите тему</option>
+            <option value="question">Вопрос по Сайтам</option>
+            <option value="cooperation">Сотрудничество</option>
+            <option value="wholesale">Заказ сайта</option>
+            <option value="other">Другое</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label for="message">Сообщение *</label>
+        <textarea id="message" name="message" rows="5" required minlength="10"></textarea>
+    </div>
+    
+    <button type="submit" class="submit-btn" id="submitBtn">Отправить сообщение</button>
+</form>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('contactForm');
+    const timestamp = document.getElementById('timestamp');
+    const submitBtn = document.getElementById('submitBtn');
+    
+    // Устанавливаем таймстамп при загрузке
+    timestamp.value = Date.now();
+    
+    // Защита от быстрой отправки
+    form.addEventListener('submit', function(e) {
+        const currentTime = Date.now();
+        const formTime = parseInt(timestamp.value);
+        const timeDiff = currentTime - formTime;
+        
+        // Если форма отправлена менее чем за 4 секунды - вероятно бот
+        if (timeDiff < 4000) {
+            e.preventDefault();
+            alert('Пожалуйста, заполняйте форму внимательнее.');
+            return;
+        }
+        
+        // Блокируем кнопку от повторных нажатий
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Отправка...';
+    });
+});
+</script>
+<!-- форма закончилась -->
         </section>
     </main>
 
